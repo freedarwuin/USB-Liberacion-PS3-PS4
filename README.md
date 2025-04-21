@@ -22,7 +22,7 @@ USB:
 
 1. **Descomprimí el paquete completo** en tu PC con Windows.
 2. Conectá tu USB en formato **FAT32**.
-3. Ejecutá el archivo `LANZADOR.bat` (como administrador si hace falta).
+3. Ejecutá el archivo `USB_Liberacion_PS3_PS4.bat` (como administrador si hace falta).
 4. El script copiará todos los archivos necesarios, configurará el entorno offline y preparará la estructura del USB.
 5. Esto incluye los archivos de firmware, los `.pkg`, el ícono del USB, el acceso directo a la tienda de juegos y un archivo README.txt con instrucciones.
 6. Esperá a que el script termine y cierre la ventana.
