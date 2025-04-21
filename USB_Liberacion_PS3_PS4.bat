@@ -76,16 +76,16 @@ echo Descargando archivos para PS3...
 :: Aquí están comentadas las descargas por ahora.
 :: Descomenta si deseas activar descarga automática.
 
-:: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/PS3UPDAT.PUP' -OutFile '%disk%:\PS3\UPDATE\PS3UPDAT.PUP'"
-:: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/1.pkgi.1.2.0.pkg' -OutFile '%disk%:\PS3\PKG\1.pkgi.1.2.0.pkg'"
-:: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/2.VIDEOSTORE.3.0.pkg' -OutFile '%disk%:\PS3\PKG\2.VIDEOSTORE.3.0.pkg'"
-:: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/3.WIKISTORE.pkg' -OutFile '%disk%:\PS3\PKG\3.WIKISTORE.pkg'"
-:: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/4.ZukoStore.pkg' -OutFile '%disk%:\PS3\PKG\4.ZukoStore.pkg'"
-:: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/5.Multiman.pkg' -OutFile '%disk%:\PS3\PKG\5.Multiman.pkg'"
-:: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/6.MultiFIX.HEN.4.92.pkg' -OutFile '%disk%:\PS3\PKG\6.MultiFIX.HEN.4.92.pkg'"
-:: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/7.webMAN_MOD_1.47.48.pkg' -OutFile '%disk%:\PS3\PKG\7.webMAN_MOD_1.47.48.pkg'"
-:: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/8.15.280_Licencias.pkg' -OutFile '%disk%:\PS3\PKG\8.15.280_Licencias.pkg'"
-:: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/9.Licencias.PS2.pkg' -OutFile '%disk%:\PS3\PKG\9.Licencias.PS2.pkg'"
+ powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/PS3UPDAT.PUP' -OutFile '%disk%:\PS3\UPDATE\PS3UPDAT.PUP'"
+ powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/1.pkgi.1.2.0.pkg' -OutFile '%disk%:\PS3\PKG\1.pkgi.1.2.0.pkg'"
+ powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/2.VIDEOSTORE.3.0.pkg' -OutFile '%disk%:\PS3\PKG\2.VIDEOSTORE.3.0.pkg'"
+ powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/3.WIKISTORE.pkg' -OutFile '%disk%:\PS3\PKG\3.WIKISTORE.pkg'"
+ powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/4.ZukoStore.pkg' -OutFile '%disk%:\PS3\PKG\4.ZukoStore.pkg'"
+ powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/5.Multiman.pkg' -OutFile '%disk%:\PS3\PKG\5.Multiman.pkg'"
+ powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/6.MultiFIX.HEN.4.92.pkg' -OutFile '%disk%:\PS3\PKG\6.MultiFIX.HEN.4.92.pkg'"
+ powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/7.webMAN_MOD_1.47.48.pkg' -OutFile '%disk%:\PS3\PKG\7.webMAN_MOD_1.47.48.pkg'"
+ powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/8.15.280_Licencias.pkg' -OutFile '%disk%:\PS3\PKG\8.15.280_Licencias.pkg'"
+ powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/9.Licencias.PS2.pkg' -OutFile '%disk%:\PS3\PKG\9.Licencias.PS2.pkg'"
 
 :: Crear README.txt
 echo [*] Generando README.txt...
