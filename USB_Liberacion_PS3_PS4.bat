@@ -76,7 +76,7 @@ echo Descargando archivos para PS3...
 :: Aquí están comentadas las descargas por ahora.
 :: Descomenta si deseas activar descarga automática.
 
-:: powershell -Command "Invoke-WebRequest -Uri 'https://www.ps3xploit.me/firmware/hfw/HFW_4.92.1_PS3UPDAT.PUP' -OutFile '%disk%:\PS3\UPDATE\PS3UPDAT.PUP'"
+:: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/PS3UPDAT.PUP' -OutFile '%disk%:\PS3\UPDATE\PS3UPDAT.PUP'"
 :: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/1.pkgi.1.2.0.pkg' -OutFile '%disk%:\PS3\PKG\1.pkgi.1.2.0.pkg'"
 :: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/2.VIDEOSTORE.3.0.pkg' -OutFile '%disk%:\PS3\PKG\2.VIDEOSTORE.3.0.pkg'"
 :: powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/3.WIKISTORE.pkg' -OutFile '%disk%:\PS3\PKG\3.WIKISTORE.pkg'"
