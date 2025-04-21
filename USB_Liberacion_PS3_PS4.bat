@@ -3,15 +3,26 @@ setlocal EnableDelayedExpansion
 color 0A
 title USB LIBERACION - PS3 / PS4 - by freedarwuin
 
+:: ==================================================
+:: INICIO - INFORMACIÓN Y SELECCIÓN DE CONSOLA
+:: ==================================================
 echo ==================================================
 echo      CREAR USB PARA LIBERAR CONSOLA (PS3 / PS4)
 echo ==================================================
 echo.
 
+:: Selección de consola
+echo ¿Para qué consola quieres preparar el USB?
+echo [1] PS3
+echo [2] PS4
+echo [3] Ambas
+set /p opcion="Elegir una opción (1, 2 o 3): "
+
 :: Mostrar discos conectados
+echo.
 wmic logicaldisk get name, volumename, description
 echo.
-set /p disk="Escribí la letra de la unidad USB (ej: E): "
+set /p disk="Escribe la letra de la unidad USB (ej: E): "
 echo.
 
 :: Verificar acceso
@@ -21,115 +32,89 @@ if not exist %disk%:\ (
     exit /b
 )
 
-:: Crear estructura
+:: ==================================================
+:: CREACIÓN DE ESTRUCTURA DE CARPETAS
+:: ==================================================
 echo [*] Creando carpetas...
-mkdir "%disk%:\LIBERACION\PS3\UPDATE"
-mkdir "%disk%:\LIBERACION\PS3\PKG"
-mkdir "%disk%:\LIBERACION\PS3\EXPLOIT"
-mkdir "%disk%:\LIBERACION\PS4"
 
-:: Descargar archivos para PS3
+if "%opcion%"=="1" (
+    mkdir "%disk%:\PS3\UPDATE"
+    mkdir "%disk%:\PS3\PKG"
+    mkdir "%disk%:\PS3\EXPLOIT"
+
+    :: Crear acceso directo a zukostore
+    echo [InternetShortcut] > "%disk%:\zukostore.url"
+    echo URL=https://thezukostore.com/ >> "%disk%:\zukostore.url"
+    echo IconFile=explorer.exe >> "%disk%:\zukostore.url"
+    echo IconIndex=0 >> "%disk%:\zukostore.url"
+
+    :: Abrir tienda recomendada
+    start https://thezukostore.com/
+)
+
+if "%opcion%"=="2" (
+    mkdir "%disk%:\PS4"
+)
+
+if "%opcion%"=="3" (
+    mkdir "%disk%:\PS3\UPDATE"
+    mkdir "%disk%:\PS3\PKG"
+    mkdir "%disk%:\PS3\EXPLOIT"
+    mkdir "%disk%:\PS4"
+)
+
+:: ==================================================
+:: DESCARGA DE ARCHIVOS PARA PS3
+:: ==================================================
+if "%opcion%"=="1" goto ps3
+if "%opcion%"=="3" goto ps3
+goto ps4
+
+:ps3
 echo Descargando archivos para PS3...
-powershell -Command "Invoke-WebRequest -Uri 'https://www.ps3xploit.me/firmware/hfw/HFW_4.92.1_PS3UPDAT.PUP' -OutFile '%disk%:\LIBERACION\PS3\UPDATE\PS3UPDAT.PUP'"
-powershell -Command "Invoke-WebRequest -Uri 'https://github.com/aldostools/webMAN-MOD/releases/download/1.47.48/webMAN_MOD_1.47.48_Installer.pkg' -OutFile '%disk%:\LIBERACION\PS3\PKG\webMAN_MOD.pkg'"
-powershell -Command "Invoke-WebRequest -Uri 'https://github.com/aldostools/Resources/releases/download/Addons/multiMAN.pkg' -OutFile '%disk%:\LIBERACION\PS3\PKG\multiMAN.pkg'"
-powershell -Command "Invoke-WebRequest -Uri 'https://github.com/aldostools/IRISMAN/releases/download/4.91/IRISMAN_4.91.pkg' -OutFile '%disk%:\LIBERACION\PS3\PKG\IRISMAN.pkg'"
 
-:: Descargar archivos para PS4
-echo Descargando archivos para PS4...
-powershell -Command "Invoke-WebRequest -Uri 'https://github.com/GoldHEN/GoldHEN_Resources/raw/main/exfathax.img' -OutFile '%disk%:\LIBERACION\PS4\exfathax.img'"
-powershell -Command "Invoke-WebRequest -Uri 'https://github.com/GoldHEN/GoldHEN_Resources/raw/main/GoldHEN_2.4b16.pkg' -OutFile '%disk%:\LIBERACION\PS4\GoldHEN.pkg'"
+powershell -Command "Invoke-WebRequest -Uri 'https://www.ps3xploit.me/firmware/hfw/HFW_4.92.1_PS3UPDAT.PUP' -OutFile '%disk%:\PS3\UPDATE\PS3UPDAT.PUP'"
+powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/1.pkgi.1.2.0.pkg' -OutFile '%disk%:\1.pkgi.1.2.0.pkg'"
+powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/2.VIDEOSTORE.3.0.pkg' -OutFile '%disk%:\2.VIDEOSTORE.3.0.pkg'"
+powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/3.WIKISTORE.pkg' -OutFile '%disk%:\3.WIKISTORE.pkg'"
+powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/4.ZukoStore.pkg' -OutFile '%disk%:\4.ZukoStore.pkg'"
+powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/5.Multiman.pkg' -OutFile '%disk%:\5.Multiman.pkg'"
+powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/6.MultiFIX.HEN.4.92.pkg' -OutFile '%disk%:\6.MultiFIX.HEN.4.92.pkg'"
+powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/7.webMAN_MOD_1.47.48.pkg' -OutFile '%disk%:\7.webMAN_MOD_1.47.48.pkg'"
+powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/8.15.280_Licencias.pkg' -OutFile '%disk%:\8.15.280_Licencias.pkg'"
+powershell -Command "Invoke-WebRequest -Uri 'https://github.com/freedarwuin/USB-Liberacion-PS3-PS4/releases/download/release/9.Licencias.PS2.pkg' -OutFile '%disk%:\9.Licencias.PS2.pkg'"
 
-:: Descargar ícono personalizado
-echo Descargando ícono para la USB...
-powershell -Command "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1229183986660364308/1231307265125740675/usb.ico' -OutFile '%disk%:\usb.ico'"
-
-:: Crear autorun.inf
-echo [*] Generando autorun.inf...
+:: Crear AVANZADO.txt
+echo [*] Generando AVANZADO.txt...
 (
-echo [Autorun]
-echo ICON=usb.ico
-echo LABEL=LIBERACION
-) > "%disk%:\autorun.inf"
-
-:: Crear README.txt
-echo [*] Generando README.txt...
-
-echo ===============================> "%disk%:\README.txt"
-echo USB DE LIBERACION - PS3 + PS4>> "%disk%:\README.txt"
-echo ===============================>> "%disk%:\README.txt"
-echo.>> "%disk%:\README.txt"
-echo Contenido creado por: freedarwuin>> "%disk%:\README.txt"
-echo Discord: freedarwuin>> "%disk%:\README.txt"
-echo.>> "%disk%:\README.txt"
-echo CARPETAS:>> "%disk%:\README.txt"
-echo - LIBERACION\PS3\UPDATE -> HFW_4.92.1>> "%disk%:\README.txt"
-echo - LIBERACION\PS3\PKG -> webMAN MOD, multiMAN, IRISMAN>> "%disk%:\README.txt"
-echo - LIBERACION\PS4 -> GoldHEN + exfathax.img>> "%disk%:\README.txt"
-echo.>> "%disk%:\README.txt"
-echo INSTRUCCIONES PS3:>> "%disk%:\README.txt"
-echo 1. Instalar HFW desde recovery.>> "%disk%:\README.txt"
-echo 2. Entrar al navegador y abrir: https://www.ps3xploit.me>> "%disk%:\README.txt"
-echo 3. Ejecutar HEN Auto Installer>> "%disk%:\README.txt"
-echo 4. Instalar PKG desde la carpeta correspondiente.>> "%disk%:\README.txt"
-echo.>> "%disk%:\README.txt"
-echo INSTRUCCIONES PS4:>> "%disk%:\README.txt"
-echo - Usar exfathax.img para ejecutar exploit.>> "%disk%:\README.txt"
-echo - Instalar GoldHEN.pkg.>> "%disk%:\README.txt"
-echo.>> "%disk%:\README.txt"
-echo ===============================>> "%disk%:\README.txt"
-echo INFORMACION ADICIONAL - PS3>> "%disk%:\README.txt"
-echo ===============================>> "%disk%:\README.txt"
-echo.>> "%disk%:\README.txt"
-echo BORRAR ARCHIVOS .PKG>> "%disk%:\README.txt"
-echo 1. Ir a multiman>> "%disk%:\README.txt"
-echo 2. Ir a ps3 root>> "%disk%:\README.txt"
-echo 3. Entrar en dev_hdd0>> "%disk%:\README.txt"
-echo 4. Entrar en packages>> "%disk%:\README.txt"
-echo 5. Seleccionar con circulo el pkg y eliminar>> "%disk%:\README.txt"
-echo O desde el XMB: borrar archivos .pkg>> "%disk%:\README.txt"
-echo.>> "%disk%:\README.txt"
-echo INSTALAR DLC, PARCHES O FIXES .PKG>> "%disk%:\README.txt"
-echo Orden correcta: DLC -> Update -> Fix>> "%disk%:\README.txt"
-echo 1. Descargar el .pkg correcto (misma version y region)>> "%disk%:\README.txt"
-echo 2. Pasarlo a la raiz del USB (sin carpetas)>> "%disk%:\README.txt"
-echo 3. Ir a administrador de archivos .pkg>> "%disk%:\README.txt"
-echo 4. Instalar desde almacenamiento del sistema>> "%disk%:\README.txt"
-echo.>> "%disk%:\README.txt"
-echo INSTALAR VARIOS PKG AUTOMATICAMENTE>> "%disk%:\README.txt"
-echo 1. Enumerarlos correctamente (ej: pkg1, pkg2…)>> "%disk%:\README.txt"
-echo 2. Ir a la carpeta y tocar triangulo -> "Install all packages">> "%disk%:\README.txt"
-echo 3. Se instalarán todos en orden automáticamente>> "%disk%:\README.txt"
-echo.>> "%disk%:\README.txt"
-echo IRISMAN PARA PENDRIVE NTFS + PKG > 4GB>> "%disk%:\README.txt"
-echo 1. Formatear en NTFS y copiar .pkg en raiz>> "%disk%:\README.txt"
-echo 2. Conectar a USB cerca del lector>> "%disk%:\README.txt"
-echo 3. Activar HEN y abrir IRISMAN>> "%disk%:\README.txt"
-echo 4. Buscar dev_hdd0 > packages>> "%disk%:\README.txt"
-echo 5. Del otro lado entrar en ntfs0>> "%disk%:\README.txt"
-echo 6. Triangulo en el .pkg y copiar>> "%disk%:\README.txt"
-echo 7. Salir de IRISMAN e instalar .pkg desde XMB>> "%disk%:\README.txt"
-echo.>> "%disk%:\README.txt"
-echo ===============================>> "%disk%:\README.txt"
-echo DESCARGA DE JUEGOS RECOMENDADA>> "%disk%:\README.txt"
-echo https://thezukostore.com/>> "%disk%:\README.txt"
-echo ===============================>> "%disk%:\README.txt"
-echo.>> "%disk%:\README.txt"
-
-:: Crear acceso directo a tienda recomendada
-echo [InternetShortcut] > "%disk%:\JUEGOS PS3+PS4.url"
-echo URL=https://thezukostore.com/ >> "%disk%:\JUEGOS PS3+PS4.url"
-echo IconFile=explorer.exe >> "%disk%:\JUEGOS PS3+PS4.url"
-echo IconIndex=0 >> "%disk%:\JUEGOS PS3+PS4.url"
-
-
-:: Fin
-echo.
-echo USB lista. Revisa %disk%:\LIBERACION
-echo README.txt, autorun.inf y acceso directo a juegos creados correctamente.
-
-:: Abrir tienda recomendada
-start https://thezukostore.com/
-
-pause
-exit /b
+    echo ===============================
+    echo INFORMACIÓN ADICIONAL - PS3
+    echo ===============================
+    echo.
+    echo BORRAR ARCHIVOS .PKG
+    echo 1. Ir a multiman
+    echo 2. Ir a ps3 root
+    echo 3. Entrar en dev_hdd0
+    echo 4. Entrar en packages
+    echo 5. Seleccionar con círculo el pkg y eliminar
+    echo O desde el XMB: borrar archivos .pkg
+    echo.
+    echo INSTALAR DLC, PARCHES O FIXES .PKG
+    echo Orden correcta: DLC -> Update -> Fix
+    echo 1. Descargar el .pkg correcto (misma versión y región)
+    echo 2. Pasarlo a la raíz del USB (sin carpetas)
+    echo 3. Ir a administrador de archivos .pkg
+    echo 4. Instalar desde almacenamiento del sistema
+    echo.
+    echo INSTALAR VARIOS PKG AUTOMÁTICAMENTE
+    echo 1. Enumerarlos correctamente (ej: pkg1, pkg2…)
+    echo 2. Ir a la carpeta y tocar triángulo -> "Install all packages"
+    echo 3. Se instalarán todos en orden automáticamente
+    echo.
+    echo IRISMAN PARA PENDRIVE NTFS + PKG > 4GB
+    echo 1. Formatear en NTFS y copiar .pkg en raíz
+    echo 2. Conectar a USB cerca del lector
+    echo 3. Activar HEN y abrir IRISMAN
+    echo 4. Buscar dev_hdd0 > packages
+    echo 5. Del otro lado entrar en ntfs0
+::contentReference[oaicite:0]{index=0}
