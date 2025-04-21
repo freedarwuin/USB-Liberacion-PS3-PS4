@@ -8,14 +8,14 @@ Contenidos para liberar PS3 y PS4 desde USB.
 USB:
 ├── LIBERACION
 │   └── PS3
-│       ├── UPDATE\          # HFW 4.92.1 (PS3UPDAT.PUP)
-│       ├── PKG\             # webMAN MOD, multiMAN, IRISMAN
-│       └── EXPLOIT\         # (Espacio reservado para exploits offline)
-├── usb.ico                  # Ícono personalizado del USB
-├── autorun.inf              # Archivo para asignar ícono y nombre al USB
-├── LANZADOR.bat             # Script automático para preparar la USB
-├── README.txt               # Instrucciones offline detalladas
-└── JUEGOS PS1+PS2+PS3.url   # Acceso directo a la web de juegos recomendada
+│       ├── UPDATE\             # HFW 4.92.1 (PS3UPDAT.PUP)
+│       ├── PKG\                # webMAN MOD, multiMAN, IRISMAN
+│       └── EXPLOIT\            # (Espacio reservado para exploits offline)
+├── usb.ico                     # Ícono personalizado del USB
+├── autorun.inf                 # Archivo para asignar ícono y nombre al USB
+├── USB_Liberacion_PS3_PS4.bat  # Script automático para preparar la USB
+├── README.txt                  # Instrucciones offline detalladas
+└── zukostore.url               # Acceso directo a la web de juegos recomendada
 ```
 
 ## ⚙️ Preparación de la USB con el servidor offline
